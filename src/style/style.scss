@@ -1,5 +1,61 @@
-$body-color: red;
+$font-color: whitesmoke;
+$font-family: 'Abel';
+
+body, html, div {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
 body {
-  color: $body-color;
+  color: $font-color;
+  font-family: $font-family;
+  background: -webkit-linear-gradient(360deg,#00537E 10%,#3AA17E 360%);
+  background: linear-gradient(360deg,#00537E 10%,#3AA17E 360%);
+
+  h1 {
+    font-size: 5em;
+  }
+
+  p {
+    font-size: 2.5em;
+  }
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
+
+  .inner {
+    height: 75%;
+    width: calc(100% / 3);
+    text-align: center;
+    @media (orientation: landscape) {
+      margin-bottom: auto;
+      margin-top: auto;
+    }
+    @media (orientation: portrait) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    section {
+      padding: 5em;
+    }
+  }
+
+  .left {
+    order: -1;
+  }
+
+  .right {
+    order: 1;
+  }
+
 }
