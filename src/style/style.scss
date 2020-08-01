@@ -12,9 +12,11 @@ body {
   font-family: $font-family;
   background: -webkit-linear-gradient(360deg,#00537E 10%,#3AA17E 360%);
   background: linear-gradient(360deg,#00537E 10%,#3AA17E 360%);
+  height: 100vh;
+  width: 100vw;
 
   h1 {
-    font-size: 5em;
+    font-size: 4em;
   }
 
   p {
@@ -25,8 +27,14 @@ body {
 .content {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
-  width: 100vw;
+  @media (orientation: landscape) {
+    height: 100%;
+    width: 100%;
+  }
+  @media (orientation: portrait) {
+    height: 100%;
+    width: 100%;
+  }
   justify-content: center;
 
   @media (orientation: portrait) {
@@ -44,6 +52,8 @@ body {
     @media (orientation: portrait) {
       margin-left: auto;
       margin-right: auto;
+      height: 50%;
+      width: 100%;
     }
     section {
       padding: 5em;
@@ -52,10 +62,69 @@ body {
 
   .left {
     order: -1;
+
+    .answer {
+      padding-top: 0;
+    }
+
+    .languages {
+      margin-top: 0.5em;
+    }
+
+    .languages::after {
+      font-family: "Caveat Brush";
+      font-size: 2em;
+      background: -webkit-linear-gradient(#5cff00, #3AA17E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      min-width: 50%;
+      content: 'Html';
+      animation: linear;
+      animation-name: animation-languages;
+      animation-duration: 15s;
+      animation-iteration-count: infinite;
+    }
   }
 
   .right {
-    order: 1;
-  }
+    order: 2;
 
+    section {
+      padding-top: calc(100% / 3);
+      max-height: calc(100% / 3);
+    }
+
+    a:link, a:visited, a:active {
+      color: whitesmoke;
+      text-decoration-line: none;
+    }
+  }
+}
+
+/* The animation code */
+@keyframes animation-languages {
+  11% {
+    content: 'Css/Scss';
+  }
+  22% {
+    content: 'JavaScript';
+  }
+  33% {
+    content: 'Vue';
+  }
+  44% {
+    content: 'PHP';
+  }
+  55% {
+    content: 'C#';
+  }
+  66% {
+    content: 'MySql';
+  }
+  77% {
+    content: 'Webpack';
+  }
+  88% {
+    content: 'Git';
+  }
 }
