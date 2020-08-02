@@ -17,10 +17,16 @@ body {
 
   h1 {
     font-size: 4em;
+    @media (max-device-width: 1079px) {
+      font-size: 2em;
+    }
   }
 
   p {
     font-size: 2.5em;
+    @media (max-device-width: 1079px) {
+      font-size: 1.5em;
+    }
   }
 }
 
@@ -41,6 +47,26 @@ body {
     flex-direction: column;
   }
 
+  section {
+    padding: 5em;
+    @media (orientation: portrait) and (max-device-height: 1000px) {
+      padding: 3em;
+    }
+
+    @media (orientation: landscape) {
+      @media (max-device-width: 1079px) {
+        padding: 3em;
+      }
+
+      @media (max-device-height: 400px) {
+        padding: 0;
+        h1 {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
   .inner {
     height: 75%;
     width: calc(100% / 3);
@@ -55,16 +81,19 @@ body {
       height: 50%;
       width: 100%;
     }
-    section {
-      padding: 5em;
-    }
   }
 
   .left {
     order: -1;
 
+    .question {
+      padding-bottom: 0;
+    }
+
     .answer {
       padding-top: 0;
+      opacity: 0;
+      animation: fadeIn 1s ease-in 1.5s forwards;
     }
 
     .languages {
@@ -80,9 +109,10 @@ body {
       min-width: 50%;
       content: 'Html';
       animation: linear;
-      animation-name: animation-languages;
+      animation-name: languages;
       animation-duration: 15s;
       animation-iteration-count: infinite;
+      animation-delay: 2.5s;
     }
   }
 
@@ -90,41 +120,94 @@ body {
     order: 2;
 
     section {
-      padding-top: calc(100% / 3);
-      max-height: calc(100% / 3);
+      max-height: 50%;
     }
 
-    a:link, a:visited, a:active {
-      color: whitesmoke;
-      text-decoration-line: none;
+    .contact {
+      opacity: 0;
+      animation: slideMe 1s ease-in 4s forwards;
+
+      a:link, a:visited, a:active {
+        color: whitesmoke;
+        text-decoration-line: none;
+      }
+
+      @media (orientation: landscape) and (max-device-height: 400px) {
+        padding-top: 10%;
+      }
+    }
+
+    .logo {
+      height: 35vh;
+      @media (orientation: portrait) and (max-device-height: 1079px) {
+        height: 25vh;
+      }
+      width: auto;
+      background-image: url("../assets/images/me.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
 }
 
 /* The animation code */
-@keyframes animation-languages {
-  11% {
+@keyframes languages {
+  12% {
     content: 'Css/Scss';
   }
-  22% {
+  24% {
     content: 'JavaScript';
   }
-  33% {
+  36% {
     content: 'Vue';
   }
-  44% {
+  48% {
     content: 'PHP';
   }
-  55% {
+  60% {
     content: 'C#';
   }
-  66% {
+  72% {
     content: 'MySql';
   }
-  77% {
+  84% {
     content: 'Webpack';
   }
-  88% {
+  96% {
     content: 'Git';
+  }
+}
+
+@keyframes slideMe {
+  0%{
+    transform: skewX(53deg) translateX(+500px);
+    opacity: 0;
+  }
+  60%{
+    transform: translateX(0px);
+  }
+  62%{
+    transform: skewX(0deg) translateX(30px);
+  }
+  70%{
+    transform: skew(-20deg);
+    opacity: 1;
+  }
+  80%{
+    transform: skew(0deg) translate(0);
+  }
+  90%{
+    transform: skew(-5deg);
+  }
+  100%{
+    transform: skew(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
   }
 }
