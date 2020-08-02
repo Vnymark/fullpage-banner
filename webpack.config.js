@@ -32,7 +32,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Output Management',
+            title: 'Viktor Nymark',
             template: './src/index.html',
         }),
     ],
