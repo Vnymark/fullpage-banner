@@ -129,8 +129,6 @@ body {
     }
 
     .contact {
-      opacity: 0;
-      animation: slideMe 1s ease-in 4s forwards;
 
       a:link, a:visited, a:active {
         color: whitesmoke;
@@ -143,6 +141,7 @@ body {
     }
 
     .logo {
+      opacity: 0;
       height: 35vh;
       @media (orientation: portrait) and (max-device-height: 1079px) {
         height: 25vh;
@@ -152,6 +151,13 @@ body {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      animation: slideMeSoft 1s ease-in 3s forwards;
+
+    }
+
+    .information {
+      opacity: 0;
+      animation: slideMe 1s ease-in 4s forwards;
     }
   }
 }
@@ -207,6 +213,20 @@ body {
   }
   100%{
     transform: skew(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slideMeSoft {
+  0%{
+    transform: translateX(+500px);
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100%{
+    transform: translate(0);
     opacity: 1;
   }
 }
